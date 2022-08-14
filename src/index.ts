@@ -9,7 +9,7 @@ require('dotenv').config();
 app.use(express.json());
 
 // ルーティング
-app.use("/api/v1/users", userRoute);
+app.use("/api/v0/users", userRoute);
 // app.use("/api/v1/tasks", taskRoute);
 
 const start = async() => {
@@ -22,6 +22,7 @@ const start = async() => {
             console.log('http://localhost:5000/');
         })
     } catch (error) {
+        console.log('DBへの接続に失敗しました');
         console.warn(error)
     }
 }
