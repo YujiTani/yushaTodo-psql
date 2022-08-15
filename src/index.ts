@@ -1,10 +1,11 @@
-const express = require('express');
-const app = express(); 
+import express from 'express';
+import connectDB from "./DB/connect"
+const app = express();
 const PORT = 5000;
+require('dotenv').config();
+
 const userRoute = require('./Routes/users');
 // const taskRoute = require('./Routes/tasks');
-const connectDB = require("./DB/connect");
-require('dotenv').config();
 
 app.use(express.json());
 
@@ -14,7 +15,7 @@ app.use("/api/v0/users", userRoute);
 
 const start = async() => {
     try {
-        // DB接続
+        // DBに接続
         connectDB.connect();
 
         app.listen(PORT, () => {

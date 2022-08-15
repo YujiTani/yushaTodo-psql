@@ -1,53 +1,22 @@
+import express from 'express';
 const router = express.Router();
-let { users } = require("../TestData/users");
-app.use(express.json());
+let { users } = require('../TestData/users');
+
+import { getAll, getById, create, updateById, deleteById } from '../Controllers/users';
 
 // ユーザー一覧取得
-router.get("/", (req, res) => {
-  res.send(users);
-});
+router.get('/', getAll);
 
 // IDの一致するユーザー取得
-router.get("/:id", (req, res) => {
-  const user = users.find((user) => {
-    return user.id === parseInt(req.params.id)
-  })
-  res.send(user);
-});
+router.get('/:id', getById);
 
 // ユーザー登録
-router.post("/", (req, res) => {
-  const user = {
-    id: users.length + 1,
-    lastName: req.body.lastName,
-    firstName: req.body.firstName,
-    email: req.body.email,
-    password: req.body.password,
-  };
-
-  users.push(user);
-  res.send(user);
-});
+router.post('/', create);
 
 // ユーザー情報更新
-router.put("/:id", (req, res) => {
-  const user = users.find((user) => {
-    return user.id === parseInt(req.params.id);
-  });
-
-  user.lastName = req.body.lastName
-  user.firstName = req.body.firstName
-
-  res.send(user);
-});
+router.put('/:id', updateById);
 
 // ユーザー削除
-router.delete("/:id", (req, res) => {
-  users = users.filter((user) => {
-    return user.id !== parseInt(req.params.id);
-  });
-
-  res.send(`ユーザーID ${req.params.id}を削除しました。`);
-});
+router.delete('/:id', deleteById);
 
 module.exports = router;
