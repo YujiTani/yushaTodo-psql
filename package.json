@@ -13,7 +13,7 @@
       "@types/node": "^16.11.10"
    },
    "scripts": {
-      "start": "ts-node src/index.ts",
+      "start": "ts-node-esm src/index.ts",
       "typeorm": "typeorm-ts-node-commonjs"
    }
 }
