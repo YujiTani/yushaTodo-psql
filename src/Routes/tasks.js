@@ -1,26 +1,27 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
-const {    
+
+import {
   getAll,
-  get,
+  getById,
   create,
-  update,
-  deleteSingle
-} = require('../Controllers/tasks');
+  updateById,
+  deleteById,
+} from "../Controllers/tasks";
 
 // タスク一覧取得
-router.get("/", getAll)
+router.get("/", getAll);
 
 // タスク取得
-router.get("/:id", get)
+router.get("/:id", getById);
 
 // 新規タスク作成
-router.post("/", create)
+router.post("/", create);
 
 // タスク更新
-router.put("/:id", update)
+router.put("/:id", updateById);
 
 // タスク削除
-router.delete("/:id", deleteSingle)
+router.delete("/:id", deleteById);
 
 module.exports = router;

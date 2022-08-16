@@ -5,13 +5,13 @@ const PORT = 5000;
 require('dotenv').config();
 
 const userRoute = require('./Routes/users');
-// const taskRoute = require('./Routes/tasks');
+const taskRoute = require('./Routes/tasks');
 
 app.use(express.json());
 
 // ルーティング
 app.use("/api/v0/users", userRoute);
-// app.use("/api/v1/tasks", taskRoute);
+app.use("/api/v1/tasks", taskRoute);
 
 const start = async() => {
     try {

@@ -1,8 +1,13 @@
 import express from 'express';
 const router = express.Router();
-let { users } = require('../TestData/users');
 
-import { getAll, getById, create, updateById, deleteById } from '../Controllers/users';
+import {
+  getAll,
+  getById,
+  create,
+  updateById,
+  deleteById,
+} from '../Controllers/users';
 
 // ユーザー一覧取得
 router.get('/', getAll);
